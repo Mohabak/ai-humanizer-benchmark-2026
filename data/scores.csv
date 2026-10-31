@@ -1,0 +1,57 @@
+text,detector,ai,mixed,human,verdict,notes
+original-s1,gptzero,100,0,0,highly confident AI,model 4.1o; under-100-words warning
+original-s1,zerogpt,100,,,AI/GPT Generated,
+original-s2,zerogpt,100,,,AI/GPT Generated,
+original-s3,zerogpt,100,,,AI/GPT Generated,
+walter-s1,zerogpt,0,,,Human written,
+walter-s2,zerogpt,36.2,,,Most Likely Human written; may include AI parts,
+walter-s3,zerogpt,0,,,Human written,
+quillbot-s1,zerogpt,100,,,AI/GPT Generated,
+quillbot-s2,zerogpt,97.7,,,Mixed signals; some parts AI,
+quillbot-s3,zerogpt,0,,,Human written,
+undetectable-s1,zerogpt,64.1,,,Likely Human written; may include AI parts,
+undetectable-s2,zerogpt,26.6,,,Most Likely Human written; may include AI parts,
+undetectable-s3,zerogpt,22.3,,,Most Likely Human written; may include AI parts,
+humanizeai-s1,zerogpt,0,,,Human written,
+humanizeai-s2,zerogpt,15.7,,,Human written,
+humanizeai-s3,zerogpt,0,,,Human written,
+writehuman-s1,zerogpt,19.6,,,Human written,
+original-s1,sapling,96.2,,,,
+original-s2,sapling,89.7,,,,
+original-s3,sapling,95.6,,,,
+walter-s1,sapling,0.7,,,,
+walter-s2,sapling,9.0,,,,
+walter-s3,sapling,93.4,,,,
+quillbot-s1,sapling,97.3,,,,
+quillbot-s2,sapling,98.4,,,,
+quillbot-s3,sapling,98.8,,,,
+undetectable-s1,sapling,87.6,,,,
+undetectable-s2,sapling,92.7,,,,
+undetectable-s3,sapling,99.5,,,,
+humanizeai-s1,sapling,39.3,,,,
+humanizeai-s2,sapling,99.1,,,,
+humanizeai-s3,sapling,80.2,,,,
+writehuman-s1,sapling,93.5,,,,
+original-s1,copyleaks,100,,,AI Content Found,AI words 93 / human 0
+original-s2,copyleaks,100,,,AI Content Found,AI words 92 / human 0
+original-s3,copyleaks,100,,,AI Content Found,AI words 94 / human 0
+walter-s1,copyleaks,0,,,No AI Content Found,AI words 0 / human 130
+walter-s2,copyleaks,0,,,No AI Content Found,AI words 0 / human 120
+walter-s3,copyleaks,0,,,No AI Content Found,AI words 0 / human 121
+quillbot-s1,copyleaks,100,,,AI Content Found,AI words 99 / human 0
+original-s1,proofademic,99,,,99% probability AI,sentences human/mixed/ai 0/0/6
+original-s2,proofademic,98,,,98% probability AI,sentences 0/0/7
+original-s3,proofademic,99,,,99% probability AI,sentences 0/0/7
+walter-s1,proofademic,1,,,99% probability human,sentences 6/0/0
+walter-s2,proofademic,38,,,62% probability human,sentences 4/1/2
+walter-s3,proofademic,9,,,91% probability human,sentences 5/0/0
+quillbot-s1,proofademic,99,,,99% probability AI,sentences 0/0/6
+quillbot-s2,proofademic,99,,,99% probability AI,sentences 0/0/8
+quillbot-s3,proofademic,47,,,53% probability human,sentences 3/0/2
+undetectable-s1,proofademic,99,,,99% probability AI,sentences 0/0/7
+undetectable-s2,proofademic,99,,,99% probability AI,sentences 0/0/9
+undetectable-s3,proofademic,99,,,99% probability AI,sentences 0/0/6
+humanizeai-s1,proofademic,2,,,98% probability human,sentences 5/0/0
+humanizeai-s2,proofademic,95,,,95% probability AI,sentences 0/0/5
+humanizeai-s3,proofademic,73,,,73% probability AI,sentences 0/2/3
+writehuman-s1,proofademic,40,,,60% probability human,sentences 4/0/2

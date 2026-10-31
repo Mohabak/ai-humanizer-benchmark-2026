@@ -1,0 +1,7 @@
+tool,ranked,core_avg_ai_score,core_passes,core_checks,key_points_kept,key_points_total,per_detector_avg
+walter,yes,20.8,8,9,19,20,zerogpt=12.1; sapling=34.4; copyleaks=0.0; proofademic=16.0
+humanizeai,yes,44.9,5,9,16,20,zerogpt=5.2; sapling=72.9; proofademic=56.7
+undetectable,yes,76.6,2,9,20,20,zerogpt=37.7; sapling=93.3; proofademic=99.0
+quillbot,yes,81.9,2,9,20,20,zerogpt=65.9; sapling=98.2; copyleaks=100.0; proofademic=81.7
+writehuman,no,51.0,2,3,6,6,zerogpt=19.6; sapling=93.5; proofademic=40.0
+original,no,97.5,0,9,,,gptzero=100.0; zerogpt=100.0; sapling=93.8; copyleaks=100.0; proofademic=98.7
