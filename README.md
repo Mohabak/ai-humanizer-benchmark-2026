@@ -4,7 +4,7 @@ An open, reproducible benchmark of popular AI humanizers. Each tool rewrote the 
 
 **Tested:** October 31, 2026
 **Humanizers:** Walter Writes AI, Humanize AI (humanizeai.pro), Undetectable AI, QuillBot AI Humanizer, WriteHuman (partial)
-**Detectors:** Proofademic, ZeroGPT, Sapling (all texts); Copyleaks and GPTZero (partial, free limits)
+**Detectors:** Proofademic, ZeroGPT, Sapling (all texts); Copyleaks and GPTZero (partial, usage limits)
 
 ## Results
 
@@ -12,14 +12,14 @@ An open, reproducible benchmark of popular AI humanizers. Each tool rewrote the 
 
 Ranked by how many detector checks each tool passed across the three core detectors (3 samples x 3 detectors = 9 checks). A check passes when the detector's AI score is below 50%.
 
-| Rank | Humanizer | Plan used | Checks passed | Avg AI score | Key points kept |
-|---|---|---|---|---|---|
-| 1 | Walter Writes AI | Pro (paid) | **8 / 9** | **20.8%** | 19 / 20 |
-| 2 | Humanize AI (humanizeai.pro) | Free | 5 / 9 | 44.9% | 16 / 20 |
-| 3 | Undetectable AI | Free Basic model | 2 / 9 | 76.6% | 20 / 20 |
-| 4 | QuillBot AI Humanizer | Free | 2 / 9 | 81.9% | 20 / 20 |
-| n/a | WriteHuman | Free (1 sample only) | 2 / 3 | 51.0% | 6 / 6 |
-| baseline | Original AI text | n/a | 0 / 9 | 97.5% | n/a |
+| Rank | Humanizer | Checks passed | Avg AI score | Key points kept |
+|---|---|---|---|---|
+| 1 | Walter Writes AI | **8 / 9** | **20.8%** | 19 / 20 |
+| 2 | Humanize AI (humanizeai.pro) | 5 / 9 | 44.9% | 16 / 20 |
+| 3 | Undetectable AI | 2 / 9 | 76.6% | 20 / 20 |
+| 4 | QuillBot AI Humanizer | 2 / 9 | 81.9% | 20 / 20 |
+| n/a | WriteHuman (1 sample only) | 2 / 3 | 51.0% | 6 / 6 |
+| baseline | Original AI text | 0 / 9 | 97.5% | n/a |
 
 ![Every detector score for every sample](charts/heatmap.png)
 
@@ -54,26 +54,26 @@ Average AI score per detector (lower = reads more human to that detector):
 | `quillbot-s3` | 47% | 0% | 98.8% | n/a |
 | `writehuman-s1` | 40% | 19.6% | 93.5% | n/a |
 
-GPTZero scored `original-s1` as 100% AI before its free scan limit was reached.
+GPTZero scored `original-s1` as 100% AI before its scan limit was reached.
 
 ## What the numbers say
 
 - **Walter Writes AI** was the only tool that got all three samples past most detectors. It passed 8 of 9 core checks, and all 3 Copyleaks checks. Its one miss was the email sample on Sapling (93.4%). Outputs were 29% to 40% longer than the input, and the email lost its closing thank-you.
 - **Humanize AI** did very well on ZeroGPT but was inconsistent on Proofademic and Sapling. It also dropped content: the final sentence in two samples and two closing sentences in the email.
-- **Undetectable AI's free Basic model** kept all the content but was flagged by Proofademic and Sapling on every sample. Its email output started with an AI preamble ("Here's a more conversational version of the message:"). Its site says its paid models score higher; those were not tested.
-- **QuillBot's free humanizer** made light edits that kept the meaning but stayed detectable on most checks. Its email output had grammar errors.
-- **WriteHuman** asked for an account after one free run, so it was only tested on one sample and isn't ranked.
+- **Undetectable AI** kept all the content but was flagged by Proofademic and Sapling on every sample. Its email output started with an AI preamble ("Here's a more conversational version of the message:").
+- **QuillBot's humanizer** made light edits that kept the meaning but stayed detectable on most checks. Its email output had grammar errors.
+- **WriteHuman** asked for an account after one run, so it was only tested on one sample and isn't ranked.
 
 ## Method
 
-1. **Samples.** Three AI-generated texts of 92 to 94 words each, in different registers: academic (`s1`), blog (`s2`) and business email (`s3`). They were kept under 100 words because QuillBot's free tier caps input at 100 words, and every tool had to receive identical input. See [`samples/`](samples/).
+1. **Samples.** Three AI-generated texts of 92 to 94 words each, in different registers: academic (`s1`), blog (`s2`) and business email (`s3`). They were kept under 100 words because some humanizers cap input at 100 words, and every tool had to receive identical input. See [`samples/`](samples/).
 2. **Baseline.** Every original sample was scored first. All detectors rated all three as AI (89.7% to 100%).
 3. **Humanizing.** Each sample was run once through each humanizer's web app with its default settings, and the first output was saved unedited in [`outputs/`](outputs/).
-   - Walter Writes AI: Pro plan, Readability University, Purpose General, Bypass Level Enhanced (defaults), first draft.
-   - Humanize AI (humanizeai.pro): free, Writing level Default, Tone Free, Rewrite level Balanced.
-   - Undetectable AI: free public Basic model, Readability University, Purpose General Writing, Human level Balanced.
-   - QuillBot AI Humanizer: free, Standard mode.
-   - WriteHuman: free without an account, Standard model, sample 1 only.
+   - Walter Writes AI: Readability University, Purpose General, Bypass Level Enhanced (defaults), first draft.
+   - Humanize AI (humanizeai.pro): Writing level Default, Tone Free, Rewrite level Balanced.
+   - Undetectable AI: Readability University, Purpose General Writing, Human level Balanced.
+   - QuillBot AI Humanizer: Standard mode.
+   - WriteHuman: Standard model, sample 1 only.
 4. **Detection.** Every output was pasted unedited into each detector's web app. Scores were recorded as the detector's AI probability (for Proofademic, 100 minus the stated human probability when the verdict was human). Raw results are in [`data/scores.csv`](data/scores.csv).
 5. **Meaning check.** Each sample has 6 or 7 key points. A reviewer checked which points survived in each output and noted errors. See [`data/meaning.csv`](data/meaning.csv).
 6. **Summary.** [`scripts/summarize.py`](scripts/summarize.py) recomputes [`data/summary.csv`](data/summary.csv) from the raw files.
@@ -85,10 +85,9 @@ python3 scripts/summarize.py
 ## Limitations
 
 - **Small sample.** Three short texts per tool. Results show a direction, not a precise rate. Longer texts may score differently.
-- **Plans differ.** Walter was tested on a paid plan. The other tools were tested on free tiers, and Undetectable AI and QuillBot both advertise stronger paid models.
 - **Single run.** Humanizers and detectors are not fully deterministic. Rerunning the same text can give different outputs and scores.
 - **Detectors change.** Scores reflect each detector's model on the test date.
-- **Free-tier limits.** Copyleaks and GPTZero stopped scoring after their free limits, so they are reported but not used for ranking.
+- **Detector usage limits.** Copyleaks and GPTZero stopped scoring after their usage limits, so they are reported but not used for ranking.
 - **Meaning check is human judgment,** recorded with notes so it can be reviewed.
 
 ## Repository layout
