@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CORE = ("proofademic", "zerogpt", "sapling")
-PARTIAL = {"writehuman"}  # free tier stopped after one sample; reported, not ranked
+PARTIAL = {"writehuman"}  # only one sample completed; reported, not ranked
 PASS_BELOW = 50.0
 
 
